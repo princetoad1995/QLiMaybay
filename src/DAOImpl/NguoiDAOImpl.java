@@ -24,29 +24,24 @@ public class NguoiDAOImpl extends BaseDAO implements NguoiDAO {
 
     @Override
     public int dangnhap(String username, String password) {
-        String sql = "SELECT * FROM tblNguoi2 WHERE taikhoan = " + username;
-//                + " AND matkhau = " + password;
-        Connection conn2 = DBConnection.getConnection();
-        int test = 0;
-        Nguoi nguoi = new Nguoi();
-        
+        String sql = "SELECT * FROM tblNguoi WHERE taikhoan = '" + username 
+                + "' AND matkhau = '" + password + "'";   
+        Nguoi nguoi = new Nguoi();      
         try {
-            Statement st = conn2.createStatement();
-            ResultSet rs2 = st.executeQuery(sql);
-//            rs2 = stmt.executeQuery(sql);
-            while (rs2.next()) {
-                System.out.println("1");
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                nguoi.setChucnang(rs.getInt("chucnang"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(NguoiDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                conn2.close();
+                conn.close();
             } catch (SQLException ex) {
                 Logger.getLogger(NguoiDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return test;
+        return nguoi.getChucnang();
     }
 
 }

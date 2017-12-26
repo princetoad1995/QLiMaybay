@@ -14,7 +14,7 @@ import ControllerImpl.LenLichControllerImpl;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println(new LenLichControllerImpl().getListHangVe().size());
+        System.out.println(new DangnhapControllerImpl().dangnhap("admin", "admin"));
     }
    
     
