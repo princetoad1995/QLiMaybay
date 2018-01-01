@@ -11,14 +11,14 @@ package Model;
  */
 public class Chongoi {
     private int maChongoi;
-    private int maHangVe;
+    private HangVe hangVe;
 
     public Chongoi() {
     }
 
-    public Chongoi(int maChongoi, int maHangVe) {
+    public Chongoi(int maChongoi, HangVe hangVe) {
         this.maChongoi = maChongoi;
-        this.maHangVe = maHangVe;
+        this.hangVe = hangVe;
     }
 
     public int getMaChongoi() {
@@ -29,13 +29,12 @@ public class Chongoi {
         this.maChongoi = maChongoi;
     }
 
-    public int getMaHangVe() {
-        return maHangVe;
+    public HangVe getHangVe() {
+        return hangVe;
     }
 
-    public void setMaHangVe(int maHangVe) {
-        this.maHangVe = maHangVe;
+    public void setHangVe(HangVe hangVe) {
+        this.hangVe = hangVe;
     }
-    
-    
+
 }

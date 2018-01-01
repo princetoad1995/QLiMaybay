@@ -10,33 +10,27 @@ package Model;
  * @author PRINCE D. TOAD
  */
 public class SoluongHangVe {
-    private int maChuyenbay;
-    private int maHangVe;
+    private Chuyenbay chuyenbay;
+    private HangVe mangVe;
     private int soluong;
 
     public SoluongHangVe() {
     }
 
-    public SoluongHangVe(int maChuyenbay, int maHangVe, int soluong) {
-        this.maChuyenbay = maChuyenbay;
-        this.maHangVe = maHangVe;
-        this.soluong = soluong;
+    public Chuyenbay getChuyenbay() {
+        return chuyenbay;
     }
 
-    public int getMaChuyenbay() {
-        return maChuyenbay;
+    public void setChuyenbay(Chuyenbay chuyenbay) {
+        this.chuyenbay = chuyenbay;
     }
 
-    public void setMaChuyenbay(int maChuyenbay) {
-        this.maChuyenbay = maChuyenbay;
+    public HangVe getMangVe() {
+        return mangVe;
     }
 
-    public int getMaHangVe() {
-        return maHangVe;
-    }
-
-    public void setMaHangVe(int maHangVe) {
-        this.maHangVe = maHangVe;
+    public void setMangVe(HangVe mangVe) {
+        this.mangVe = mangVe;
     }
 
     public int getSoluong() {

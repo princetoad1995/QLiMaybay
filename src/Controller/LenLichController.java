@@ -5,9 +5,9 @@
  */
 package Controller;
 
+import Model.Changbay;
 import Model.HangVe;
-import Model.Sanbay;
-import Model.Thanhpho;
+import Model.Maybay;
 import java.util.List;
 
 /**
@@ -15,6 +15,6 @@ import java.util.List;
  * @author PRINCE D. TOAD
  */
 public interface LenLichController {
-    
-    public List<HangVe> getListHangVe();
+    public List<Changbay> getListChangbay();
+    public List<Maybay> getListMaybay();
 }

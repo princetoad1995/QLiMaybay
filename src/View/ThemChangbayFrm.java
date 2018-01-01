@@ -61,7 +61,7 @@ public class ThemChangbayFrm extends javax.swing.JFrame {
             cbTPDi.addItem(tp);
             cbTPDen.addItem(tp);
         }
-        cbTPDen.setSelectedIndex(2);
+        cbTPDen.setSelectedIndex(1);
         Thanhpho tDi = (Thanhpho) cbTPDi.getSelectedItem();
         Thanhpho tDen = (Thanhpho) cbTPDen.getSelectedItem();
         getListSB(cbSBDi, tDi.getMaThanhpho());
@@ -213,9 +213,13 @@ public class ThemChangbayFrm extends javax.swing.JFrame {
         } else {
             Sanbay sbDi = (Sanbay) cbSBDi.getSelectedItem();
             Sanbay sbDen = (Sanbay) cbSBDen.getSelectedItem();
-            cb.setMaSanbayDi(sbDi.getMaSanbay());
-            cb.setMaSanbayDen(sbDen.getMaSanbay());
+            cb.setSanbayDi(sbDi);
+            cb.setSanbayDen(sbDen);
             ctrl.themChangbay(cb);
+            
+            JOptionPane.showMessageDialog(null, "Thêm chặng bay thành công", 
+                    "Thông báo", NORMAL);
+            dispose();
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

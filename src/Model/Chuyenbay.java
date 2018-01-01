@@ -15,18 +15,10 @@ public class Chuyenbay {
     private int maChuyenbay;
     private Time gioDi;
     private Time gioDen;
-    private int maMaybay;
-    private int maChangbay;
+    private Maybay maybay;
+    private Changbay changbay;
 
     public Chuyenbay() {
-    }
-
-    public Chuyenbay(int maChuyenbay, Time gioDi, Time gioDen, int maMaybay, int maChangbay) {
-        this.maChuyenbay = maChuyenbay;
-        this.gioDi = gioDi;
-        this.gioDen = gioDen;
-        this.maMaybay = maMaybay;
-        this.maChangbay = maChangbay;
     }
 
     public int getMaChuyenbay() {
@@ -53,21 +45,20 @@ public class Chuyenbay {
         this.gioDen = gioDen;
     }
 
-    public int getMaMaybay() {
-        return maMaybay;
+    public Maybay getMaybay() {
+        return maybay;
     }
 
-    public void setMaMaybay(int maMaybay) {
-        this.maMaybay = maMaybay;
+    public void setMaybay(Maybay maybay) {
+        this.maybay = maybay;
     }
 
-    public int getMaChangbay() {
-        return maChangbay;
+    public Changbay getChangbay() {
+        return changbay;
     }
 
-    public void setMaChangbay(int maChangbay) {
-        this.maChangbay = maChangbay;
+    public void setChangbay(Changbay changbay) {
+        this.changbay = changbay;
     }
-    
-    
+
 }

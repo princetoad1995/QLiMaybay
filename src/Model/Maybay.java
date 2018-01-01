@@ -46,6 +46,11 @@ public class Maybay {
     public void setMota(String mota) {
         this.mota = mota;
     }
+
+    @Override
+    public String toString() {
+        return tenMaybay; //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

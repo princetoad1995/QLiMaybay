@@ -11,16 +11,10 @@ package Model;
  */
 public class TraVe {
     private int maTraVe;
-    private int maVe;
+    private Ve ve;
     private int tienPhat;
 
     public TraVe() {
-    }
-
-    public TraVe(int maTraVe, int maVe, int tienPhat) {
-        this.maTraVe = maTraVe;
-        this.maVe = maVe;
-        this.tienPhat = tienPhat;
     }
 
     public int getMaTraVe() {
@@ -31,12 +25,12 @@ public class TraVe {
         this.maTraVe = maTraVe;
     }
 
-    public int getMaVe() {
-        return maVe;
+    public Ve getVe() {
+        return ve;
     }
 
-    public void setMaVe(int maVe) {
-        this.maVe = maVe;
+    public void setVe(Ve ve) {
+        this.ve = ve;
     }
 
     public int getTienPhat() {

@@ -10,33 +10,27 @@ package Model;
  * @author PRINCE D. TOAD
  */
 public class GiaHangVe {
-    private int maHangVe;
-    private int maChuyenBay;
+    private HangVe hangVe;
+    private Chuyenbay chuyenBay;
     private int giaHangVe;
 
     public GiaHangVe() {
     }
 
-    public GiaHangVe(int maHangVe, int maChuyenBay, int giaHangVe) {
-        this.maHangVe = maHangVe;
-        this.maChuyenBay = maChuyenBay;
-        this.giaHangVe = giaHangVe;
+    public HangVe getHangVe() {
+        return hangVe;
     }
 
-    public int getMaHangVe() {
-        return maHangVe;
+    public void setHangVe(HangVe hangVe) {
+        this.hangVe = hangVe;
     }
 
-    public void setMaHangVe(int maHangVe) {
-        this.maHangVe = maHangVe;
+    public Chuyenbay getChuyenBay() {
+        return chuyenBay;
     }
 
-    public int getMaChuyenBay() {
-        return maChuyenBay;
-    }
-
-    public void setMaChuyenBay(int maChuyenBay) {
-        this.maChuyenBay = maChuyenBay;
+    public void setChuyenBay(Chuyenbay chuyenBay) {
+        this.chuyenBay = chuyenBay;
     }
 
     public int getGiaHangVe() {

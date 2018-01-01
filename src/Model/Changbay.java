@@ -11,18 +11,16 @@ package Model;
  */
 public class Changbay {
     private int maChangbay;
-    private int maSanbayDi;
-    private int maSanbayDen;
-    private String mota;
+    private Sanbay sanbayDi;
+    private Sanbay sanbayDen;
 
     public Changbay() {
     }
 
-    public Changbay(int maChangbay, int maSanbayDi, int maSanbayDen, String mota) {
+    public Changbay(int maChangbay, Sanbay sanbayDi, Sanbay sanbayDen) {
         this.maChangbay = maChangbay;
-        this.maSanbayDi = maSanbayDi;
-        this.maSanbayDen = maSanbayDen;
-        this.mota = mota;
+        this.sanbayDi = sanbayDi;
+        this.sanbayDen = sanbayDen;
     }
 
     public int getMaChangbay() {
@@ -33,29 +31,26 @@ public class Changbay {
         this.maChangbay = maChangbay;
     }
 
-    public int getMaSanbayDi() {
-        return maSanbayDi;
+    public Sanbay getSanbayDi() {
+        return sanbayDi;
     }
 
-    public void setMaSanbayDi(int maSanbayDi) {
-        this.maSanbayDi = maSanbayDi;
+    public void setSanbayDi(Sanbay sanbayDi) {
+        this.sanbayDi = sanbayDi;
     }
 
-    public int getMaSanbayDen() {
-        return maSanbayDen;
+    public Sanbay getSanbayDen() {
+        return sanbayDen;
     }
 
-    public void setMaSanbayDen(int maSanbayDen) {
-        this.maSanbayDen = maSanbayDen;
+    public void setSanbayDen(Sanbay sanbayDen) {
+        this.sanbayDen = sanbayDen;
     }
 
-    public String getMota() {
-        return mota;
-    }
-
-    public void setMota(String mota) {
-        this.mota = mota;
-    }
     
-    
+
+    @Override
+    public String toString() {
+        return maChangbay + "";
+    }
 }

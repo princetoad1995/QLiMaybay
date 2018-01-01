@@ -13,8 +13,8 @@ import java.sql.Date;
  */
 public class Ve {
     private int maVe;
-    private int maChongoi;
-    private int maChuyenbay;
+    private Chongoi chongoi;
+    private Chuyenbay chuyenbay;
     private String tenKhachhang;
     private Date ngaysinh;
     private String soID;
@@ -26,19 +26,6 @@ public class Ve {
     public Ve() {
     }
 
-    public Ve(int maVe, int maChongoi, int maChuyenbay, String tenKhachhang, Date ngaysinh, String soID, String kieuGiaytoID, String quoctich, Date ngayban, int tongTien) {
-        this.maVe = maVe;
-        this.maChongoi = maChongoi;
-        this.maChuyenbay = maChuyenbay;
-        this.tenKhachhang = tenKhachhang;
-        this.ngaysinh = ngaysinh;
-        this.soID = soID;
-        this.kieuGiaytoID = kieuGiaytoID;
-        this.quoctich = quoctich;
-        this.ngayban = ngayban;
-        this.tongTien = tongTien;
-    }
-
     public int getMaVe() {
         return maVe;
     }
@@ -47,20 +34,20 @@ public class Ve {
         this.maVe = maVe;
     }
 
-    public int getMaChongoi() {
-        return maChongoi;
+    public Chongoi getChongoi() {
+        return chongoi;
     }
 
-    public void setMaChongoi(int maChongoi) {
-        this.maChongoi = maChongoi;
+    public void setChongoi(Chongoi chongoi) {
+        this.chongoi = chongoi;
     }
 
-    public int getMaChuyenbay() {
-        return maChuyenbay;
+    public Chuyenbay getChuyenbay() {
+        return chuyenbay;
     }
 
-    public void setMaChuyenbay(int maChuyenbay) {
-        this.maChuyenbay = maChuyenbay;
+    public void setChuyenbay(Chuyenbay chuyenbay) {
+        this.chuyenbay = chuyenbay;
     }
 
     public String getTenKhachhang() {
