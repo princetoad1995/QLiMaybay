@@ -36,6 +36,11 @@ public class Thanhpho {
     public void setTenThanhpho(String tenThanhpho) {
         this.tenThanhpho = tenThanhpho;
     }
+
+    @Override
+    public String toString() {
+        return tenThanhpho; //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

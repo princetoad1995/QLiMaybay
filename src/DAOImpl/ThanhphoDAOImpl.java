@@ -6,12 +6,8 @@
 package DAOImpl;
 
 import DAO.ThanhphoDAO;
-import Database.DBConnection;
 import Model.Thanhpho;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -45,6 +41,29 @@ public class ThanhphoDAOImpl extends BaseDAO implements ThanhphoDAO {
             }
         }
         return list;
+    }
+
+    @Override
+    public Thanhpho searchThanhpho(int id) {
+        Thanhpho tp = new Thanhpho();
+        String sql = "SELECT * FROM tblThanhpho WHERE maThanhpho = " + id;
+        try {
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                tp.setMaThanhpho(rs.getInt("maThanhpho"));
+                tp.setTenThanhpho(rs.getString("tenThanhpho"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ThanhphoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ThanhphoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return tp;
     }
 
 }

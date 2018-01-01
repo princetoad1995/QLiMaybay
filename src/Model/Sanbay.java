@@ -68,4 +68,10 @@ public class Sanbay {
         this.mota = mota;
     }
 
+    @Override
+    public String toString() {
+        return tenSanbay; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

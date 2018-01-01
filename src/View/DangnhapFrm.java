@@ -9,6 +9,7 @@ import Controller.DangNhapController;
 import ControllerImpl.DangnhapControllerImpl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +29,12 @@ public class DangnhapFrm extends javax.swing.JFrame {
             if (chucnang == 1) {
                 ManhinhQuanlyFrm frm = new ManhinhQuanlyFrm();
                 frm.setVisible(true);
+            } else if(chucnang == 2){
+                JOptionPane.showMessageDialog(null, "Tài khoản không phải là "
+                        + "quản lý", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Sai thông tin đăng nhâp", 
+                        "Thông báo", JOptionPane.WARNING_MESSAGE);
             }
         });
     }

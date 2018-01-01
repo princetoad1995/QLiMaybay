@@ -15,7 +15,6 @@ import java.util.List;
  * @author PRINCE D. TOAD
  */
 public interface LenLichController {
-    public List<Thanhpho> getListThanhpho();
-    public List<Sanbay> getListSanbayTuThanhPho(int maThanhpho);
+    
     public List<HangVe> getListHangVe();
 }

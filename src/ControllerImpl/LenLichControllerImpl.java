@@ -25,18 +25,6 @@ import java.util.List;
 public class LenLichControllerImpl implements LenLichController{
     
     @Override
-    public List<Thanhpho> getListThanhpho() {
-        ThanhphoDAO tpDAO = new ThanhphoDAOImpl();
-        return tpDAO.getListThanhpho();
-    }
-
-    @Override
-    public List<Sanbay> getListSanbayTuThanhPho(int maThanhpho) {
-        SanbayDAO sbDAO = new SanbayDAOImpl();
-        return sbDAO.getListSanBayTuThanhPho(maThanhpho);
-    }
-
-    @Override
     public List<HangVe> getListHangVe() {
         HangVeDAO hvDAO = new HangVeDAOImpl();
         return hvDAO.getListHangVe();

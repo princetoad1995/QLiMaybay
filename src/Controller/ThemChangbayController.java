@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package Controller;
 
+import Model.Changbay;
+import Model.Sanbay;
 import Model.Thanhpho;
 import java.util.List;
 
@@ -12,7 +14,8 @@ import java.util.List;
  *
  * @author PRINCE D. TOAD
  */
-public interface ThanhphoDAO {
+public interface ThemChangbayController {
     public List<Thanhpho> getListThanhpho();
-    public Thanhpho searchThanhpho(int id);
+    public List<Sanbay> getListSanbayTuThanhPho(int maThanhpho);
+    public void themChangbay(Changbay cb);
 }

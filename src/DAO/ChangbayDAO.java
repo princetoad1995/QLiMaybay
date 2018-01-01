@@ -5,14 +5,14 @@
  */
 package DAO;
 
-import Model.Thanhpho;
-import java.util.List;
+import Model.Changbay;
 
 /**
  *
  * @author PRINCE D. TOAD
  */
-public interface ThanhphoDAO {
-    public List<Thanhpho> getListThanhpho();
-    public Thanhpho searchThanhpho(int id);
+public interface ChangbayDAO {
+    public Changbay getChangbay(int maChangbay);
+    
+    public void themChangbay(Changbay cb);
 }

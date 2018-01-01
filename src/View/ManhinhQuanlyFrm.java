@@ -33,6 +33,7 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
         btnQlThongtinSanbay = new javax.swing.JButton();
         btnTKKhachTheoGio = new javax.swing.JButton();
         btnTKChangbayTheoDoanhThu = new javax.swing.JButton();
+        btnChangbay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,35 +52,46 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
         btnTKChangbayTheoDoanhThu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnTKChangbayTheoDoanhThu.setText("Thống kê các chặng bay theo doanh thu");
 
+        btnChangbay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnChangbay.setText("Quản lý chặng bay");
+        btnChangbay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangbayActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(251, 251, 251)
+                .addGap(138, 138, 138)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLenlichBay, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnQlThongtinSanbay, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTKKhachTheoGio, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTKChangbayTheoDoanhThu))))
-                .addContainerGap(386, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLenlichBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnQlThongtinSanbay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTKKhachTheoGio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTKChangbayTheoDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnChangbay, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(62, 62, 62)
+                .addGap(32, 32, 32)
                 .addComponent(btnQlThongtinSanbay)
-                .addGap(41, 41, 41)
+                .addGap(30, 30, 30)
+                .addComponent(btnChangbay)
+                .addGap(27, 27, 27)
                 .addComponent(btnLenlichBay)
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
                 .addComponent(btnTKKhachTheoGio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btnTKChangbayTheoDoanhThu)
                 .addGap(31, 31, 31))
         );
@@ -97,6 +109,12 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnChangbayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangbayActionPerformed
+        // TODO add your handling code here:
+        ThemChangbayFrm changbayFrm = new ThemChangbayFrm();
+        changbayFrm.setVisible(true);
+    }//GEN-LAST:event_btnChangbayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +153,7 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChangbay;
     private javax.swing.JButton btnLenlichBay;
     private javax.swing.JButton btnQlThongtinSanbay;
     private javax.swing.JButton btnTKChangbayTheoDoanhThu;
