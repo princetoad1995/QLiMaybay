@@ -6,6 +6,7 @@
 package DAO;
 
 import Model.Changbay;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,6 @@ public interface ChangbayDAO {
     public Changbay getChangbay(int maChangbay);
     
     public void themChangbay(Changbay cb);
+    
+    public List<Changbay> getListChangbay();
 }

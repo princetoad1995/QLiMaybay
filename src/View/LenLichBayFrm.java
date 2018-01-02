@@ -5,17 +5,53 @@
  */
 package View;
 
+import Controller.LenLichController;
+import ControllerImpl.LenLichControllerImpl;
+import Model.Changbay;
+import Model.Chuyenbay;
+import Model.Maybay;
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PRINCE D. TOAD
  */
 public class LenLichBayFrm extends javax.swing.JFrame {
 
+    private LenLichController ctrl;
+
     /**
      * Creates new form LenLichBayFrm
      */
     public LenLichBayFrm() {
         initComponents();
+
+        ctrl = new LenLichControllerImpl();
+        
+        init();
+
+    }
+
+    private void init() {
+        List<Changbay> listCB = ctrl.getListChangbay();
+        for (Changbay cb : listCB) {
+            cbChangbay.addItem(cb);
+        }
+
+        List<Maybay> listMB = ctrl.getListMaybay();
+        for (Maybay mb : listMB) {
+            cbMaybay.addItem(mb);
+        }
     }
 
     /**
@@ -27,6 +63,14 @@ public class LenLichBayFrm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        utilCalendarModel1 = new org.jdatepicker.impl.UtilCalendarModel();
+        utilCalendarModel2 = new org.jdatepicker.impl.UtilCalendarModel();
+        utilCalendarModel3 = new org.jdatepicker.impl.UtilCalendarModel();
+        utilCalendarModel4 = new org.jdatepicker.impl.UtilCalendarModel();
+        jDatePickerUtil1 = new org.jdatepicker.util.JDatePickerUtil();
+        dateComponentFormatter1 = new org.jdatepicker.impl.DateComponentFormatter();
+        dateComponentFormatter2 = new org.jdatepicker.impl.DateComponentFormatter();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -34,17 +78,19 @@ public class LenLichBayFrm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtMaChuyenbay = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtGioDi = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtGioDen = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cbMaybay = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txtGioDi = new com.github.lgooddatepicker.components.TimePicker();
+        txtGioDen = new com.github.lgooddatepicker.components.TimePicker();
+        txtNgayBay = new com.github.lgooddatepicker.components.DatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Lên lịch bay cho chuyến bay");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel2.setText("Chọn mã chặng bay :");
 
@@ -63,6 +109,8 @@ public class LenLichBayFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Chọn ngày bay :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -70,27 +118,34 @@ public class LenLichBayFrm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(84, 84, 84)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbChangbay, 0, 137, Short.MAX_VALUE)
-                            .addComponent(txtMaChuyenbay)
-                            .addComponent(txtGioDi)
-                            .addComponent(txtGioDen)
-                            .addComponent(cbMaybay, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel1)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(84, 84, 84)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbChangbay, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtMaChuyenbay)
+                                    .addComponent(txtGioDi, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                    .addComponent(txtGioDen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtNgayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(116, 116, 116)
+                                .addComponent(cbMaybay, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(217, 217, 217))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,21 +160,25 @@ public class LenLichBayFrm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbChangbay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtNgayBay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtGioDi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtGioDen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtGioDen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cbMaybay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(90, 90, 90)
                 .addComponent(jButton1)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,7 +189,9 @@ public class LenLichBayFrm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,7 +199,73 @@ public class LenLichBayFrm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String err = "";
+        if (txtMaChuyenbay.getText().equals("")) {
+            err += "Chưa nhập mã chuyến bay\n";
+        }
+        if (txtNgayBay.getText().equals("")) {
+            err += "Chưa chọn ngày bay\n";
+        }
+        if (txtGioDi.getText().equals("")) {
+            err += "Chưa chọn giờ bay đi\n";
+        }
+        if (txtGioDi.getText().equals("")) {
+            err += "Chưa chọn giờ bay đến\n";
+        }
+
+        if (err.equals("")) {
+            if (!ctrl.kiemtraMaChuyenbay(txtMaChuyenbay.getText())) {
+                Chuyenbay cb = new Chuyenbay();
+                cb.setMaChuyenbay(txtMaChuyenbay.getText());
+                cb.setChangbay((Changbay) cbChangbay.getSelectedItem());
+                Date ngaybay = new Date(parseDate(txtNgayBay.getDate()));
+                cb.setNgayBay(ngaybay);
+                Time gioDi = new Time(parseTime(txtGioDi.getTime()));
+                cb.setGioDi(gioDi);
+                Time gioDen = new Time(parseTime(txtGioDen.getTime()));
+                cb.setGioDen(gioDen);
+                cb.setMaybay((Maybay) cbMaybay.getSelectedItem());
+                
+                ctrl.addChuyenbay(cb);
+                JOptionPane.showMessageDialog(null, "Thêm chuyến bay thành công", 
+                        "Thông báo", JOptionPane.OK_OPTION);
+                dispose();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Mã chuyến bay đã tồn tại", 
+                        "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, err, "Thông báo", JOptionPane.WARNING_MESSAGE);
+            System.out.println("" + parseDate(txtNgayBay.getDate()));
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private long parseTime(LocalTime time){
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+            String dateFormatter = time.format(formatter);
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+            return dateFormat.parse(dateFormatter).getTime();
+        } catch (ParseException ex) {
+            Logger.getLogger(LenLichBayFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    private long parseDate(LocalDate date){
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String dateFormatter = date.format(formatter);
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            return dateFormat.parse(dateFormatter).getTime();
+        } catch (ParseException ex) {
+            Logger.getLogger(LenLichBayFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
 
     /**
      * @param args the command line arguments
@@ -178,16 +305,26 @@ public class LenLichBayFrm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbChangbay;
     private javax.swing.JComboBox cbMaybay;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter2;
     private javax.swing.JButton jButton1;
+    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtGioDen;
-    private javax.swing.JTextField txtGioDi;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private com.github.lgooddatepicker.components.TimePicker txtGioDen;
+    private com.github.lgooddatepicker.components.TimePicker txtGioDi;
     private javax.swing.JTextField txtMaChuyenbay;
+    private com.github.lgooddatepicker.components.DatePicker txtNgayBay;
+    private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel1;
+    private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel2;
+    private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel3;
+    private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel4;
     // End of variables declaration//GEN-END:variables
 }

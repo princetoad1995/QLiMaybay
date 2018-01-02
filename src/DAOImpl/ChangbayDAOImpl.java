@@ -9,6 +9,8 @@ import DAO.ChangbayDAO;
 import Model.Changbay;
 import Model.Sanbay;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,11 +28,12 @@ public class ChangbayDAOImpl extends BaseDAO implements ChangbayDAO{
             rs = stmt.executeQuery(sql);
             while(rs.next()){
                 cb.setMaChangbay(rs.getInt("maChangbay"));
-                Sanbay sb = new Sanbay();
-                sb.setMaSanbay(rs.getInt("maSanbayDi"));
-                cb.setSanbayDi(sb);
-                sb.setMaSanbay(rs.getInt("maSanbayDen"));
-                cb.setSanbayDen(sb);
+                Sanbay sbDi = new Sanbay();
+                Sanbay sbDen = new Sanbay();
+                sbDi.setMaSanbay(rs.getInt("maSanbayDi"));
+                cb.setSanbayDi(sbDi);
+                sbDen.setMaSanbay(rs.getInt("maSanbayDen"));
+                cb.setSanbayDen(sbDen);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ChangbayDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,6 +58,38 @@ public class ChangbayDAOImpl extends BaseDAO implements ChangbayDAO{
                 Logger.getLogger(ChangbayDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @Override
+    public List<Changbay> getListChangbay() {
+        List<Changbay> listCB = new ArrayList<>();
+        String sql = "SELECT * FROM tblChangbay";
+        
+        try {
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Changbay cb = new Changbay();
+                cb.setMaChangbay(rs.getInt("maChangbay"));
+                Sanbay sbDi = new Sanbay();
+                Sanbay sbDen = new Sanbay();
+                sbDi.setMaSanbay(rs.getInt("maSanbayDi"));
+                cb.setSanbayDi(sbDi);
+                sbDen.setMaSanbay(rs.getInt("maSanbayDen"));
+                cb.setSanbayDen(sbDen);
+                
+                listCB.add(cb);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangbayDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ChangbayDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listCB;
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -12,7 +13,8 @@ import java.sql.Time;
  * @author PRINCE D. TOAD
  */
 public class Chuyenbay {
-    private int maChuyenbay;
+    private String maChuyenbay;
+    private Date ngayBay;
     private Time gioDi;
     private Time gioDen;
     private Maybay maybay;
@@ -21,11 +23,11 @@ public class Chuyenbay {
     public Chuyenbay() {
     }
 
-    public int getMaChuyenbay() {
+    public String getMaChuyenbay() {
         return maChuyenbay;
     }
 
-    public void setMaChuyenbay(int maChuyenbay) {
+    public void setMaChuyenbay(String maChuyenbay) {
         this.maChuyenbay = maChuyenbay;
     }
 
@@ -59,6 +61,14 @@ public class Chuyenbay {
 
     public void setChangbay(Changbay changbay) {
         this.changbay = changbay;
+    }
+
+    public Date getNgayBay() {
+        return ngayBay;
+    }
+
+    public void setNgayBay(Date ngayBay) {
+        this.ngayBay = ngayBay;
     }
 
 }

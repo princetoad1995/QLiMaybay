@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package DAO;
 
-import Model.Changbay;
-import Model.Chuyenbay;
 import Model.Maybay;
 import java.util.List;
 
@@ -14,9 +12,6 @@ import java.util.List;
  *
  * @author PRINCE D. TOAD
  */
-public interface LenLichController {
-    public List<Changbay> getListChangbay();
+public interface MaybayDAO {
     public List<Maybay> getListMaybay();
-    public boolean kiemtraMaChuyenbay(String maChuyenbay);
-    public void addChuyenbay(Chuyenbay cb);
 }

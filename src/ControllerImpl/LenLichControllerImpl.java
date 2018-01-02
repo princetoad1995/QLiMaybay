@@ -6,16 +6,15 @@
 package ControllerImpl;
 
 import Controller.LenLichController;
-import DAO.HangVeDAO;
-import DAO.SanbayDAO;
-import DAO.ThanhphoDAO;
-import DAOImpl.HangVeDAOImpl;
-import DAOImpl.SanbayDAOImpl;
-import DAOImpl.ThanhphoDAOImpl;
-import Model.HangVe;
-import Model.Sanbay;
-import Model.Thanhpho;
-import java.util.ArrayList;
+import DAO.ChangbayDAO;
+import DAO.ChuyenbayDAO;
+import DAO.MaybayDAO;
+import DAOImpl.ChangbayDAOImpl;
+import DAOImpl.ChuyenbayDAOImpl;
+import DAOImpl.MaybayDAOImpl;
+import Model.Changbay;
+import Model.Chuyenbay;
+import Model.Maybay;
 import java.util.List;
 
 /**
@@ -23,11 +22,29 @@ import java.util.List;
  * @author PRINCE D. TOAD
  */
 public class LenLichControllerImpl implements LenLichController{
-    
+
     @Override
-    public List<HangVe> getListHangVe() {
-        HangVeDAO hvDAO = new HangVeDAOImpl();
-        return hvDAO.getListHangVe();
+    public List<Changbay> getListChangbay() {
+        ChangbayDAO cbDAO = new ChangbayDAOImpl();
+        return cbDAO.getListChangbay();
+    }
+
+    @Override
+    public List<Maybay> getListMaybay() {
+        MaybayDAO mbDAO = new MaybayDAOImpl();
+        return mbDAO.getListMaybay();
+    }
+
+    @Override
+    public boolean kiemtraMaChuyenbay(String maChuyenbay) {
+        ChuyenbayDAO cbDAO = new ChuyenbayDAOImpl();
+        return cbDAO.kiemtraMaChuyenbay(maChuyenbay);
+    }
+
+    @Override
+    public void addChuyenbay(Chuyenbay cb) {
+        ChuyenbayDAO cbDAO = new ChuyenbayDAOImpl();
+        cbDAO.addChuyenbay(cb);
     }
     
 }
