@@ -71,4 +71,10 @@ public class Chuyenbay {
         this.ngayBay = ngayBay;
     }
 
+    @Override
+    public String toString() {
+        return maChuyenbay; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

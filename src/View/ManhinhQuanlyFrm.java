@@ -42,6 +42,11 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
 
         btnLenlichBay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLenlichBay.setText("Lên lịch bay cho chuyến bay");
+        btnLenlichBay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLenlichBayActionPerformed(evt);
+            }
+        });
 
         btnQlThongtinSanbay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnQlThongtinSanbay.setText("Quản lý thông tin một sân bay");
@@ -115,6 +120,12 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
         ThemChangbayFrm changbayFrm = new ThemChangbayFrm();
         changbayFrm.setVisible(true);
     }//GEN-LAST:event_btnChangbayActionPerformed
+
+    private void btnLenlichBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLenlichBayActionPerformed
+        // TODO add your handling code here:
+        LenLichBayFrm bayFrm = new LenLichBayFrm();
+        bayFrm.setVisible(true);
+    }//GEN-LAST:event_btnLenlichBayActionPerformed
 
     /**
      * @param args the command line arguments

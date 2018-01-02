@@ -13,6 +13,7 @@ public class GiaHangVe {
     private HangVe hangVe;
     private Chuyenbay chuyenBay;
     private int giaHangVe;
+    private int soluong;
 
     public GiaHangVe() {
     }
@@ -40,6 +41,13 @@ public class GiaHangVe {
     public void setGiaHangVe(int giaHangVe) {
         this.giaHangVe = giaHangVe;
     }
-    
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
     
 }

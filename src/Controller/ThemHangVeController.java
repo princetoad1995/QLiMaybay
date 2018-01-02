@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package Controller;
 
 import Model.Chuyenbay;
+import Model.HangVe;
 import java.util.List;
 
 /**
  *
  * @author PRINCE D. TOAD
  */
-public interface ChuyenbayDAO {
-    public void addChuyenbay(Chuyenbay cb);
-    public boolean kiemtraMaChuyenbay(String maChuyenbay);
+public interface ThemHangVeController {
     public List<Chuyenbay> getListChuyenbay();
+    public boolean kiemtraMaChuyenbay(String maChuyenbay);
+    public void themHangVe(HangVe hv);
 }
