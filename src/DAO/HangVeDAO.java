@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.GiaHangVe;
 import Model.HangVe;
 import java.util.List;
 
@@ -14,4 +15,6 @@ import java.util.List;
  */
 public interface HangVeDAO {
     public List<HangVe> getListHangVe();
+    public void themGiaHangVe(GiaHangVe giaHV);
+    public boolean kiemtraMaChuyenbay(String maChuyenbay);
 }

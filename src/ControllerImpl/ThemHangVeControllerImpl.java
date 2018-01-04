@@ -7,8 +7,11 @@ package ControllerImpl;
 
 import Controller.ThemHangVeController;
 import DAO.ChuyenbayDAO;
+import DAO.HangVeDAO;
 import DAOImpl.ChuyenbayDAOImpl;
+import DAOImpl.HangVeDAOImpl;
 import Model.Chuyenbay;
+import Model.GiaHangVe;
 import Model.HangVe;
 import java.util.List;
 
@@ -26,12 +29,14 @@ public class ThemHangVeControllerImpl implements ThemHangVeController{
 
     @Override
     public boolean kiemtraMaChuyenbay(String maChuyenbay) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HangVeDAO hangveDAO = new HangVeDAOImpl();
+        return hangveDAO.kiemtraMaChuyenbay(maChuyenbay);
     }
 
     @Override
-    public void themHangVe(HangVe hv) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     public void themGiaHangVe(GiaHangVe giaHV) {
+         HangVeDAO hvDAO = new HangVeDAOImpl();
+         hvDAO.themGiaHangVe(giaHV);
     }
     
 }

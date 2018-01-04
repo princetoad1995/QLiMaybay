@@ -6,6 +6,7 @@
 package DAOImpl;
 
 import DAO.HangVeDAO;
+import Model.GiaHangVe;
 import Model.HangVe;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,6 +44,52 @@ public class HangVeDAOImpl extends BaseDAO implements HangVeDAO{
         }
         
         return list;
+    }
+
+    @Override
+    public boolean kiemtraMaChuyenbay(String maChuyenbay) {
+        boolean check = false;
+        String sql = "SELECT * FROM tblGiaHangVe WHERE maChuyenbay = '" 
+                + maChuyenbay + "'";
+        
+        try {
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                check = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HangVeDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(HangVeDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return check;
+    }
+
+    @Override
+    public void themGiaHangVe(GiaHangVe giaHV) {
+        String sql = "INSERT INTO tblGiaHangVe VALUES ("
+                + giaHV.getHangVe().getMaHangVe() + ", '"
+                + giaHV.getChuyenBay().getMaChuyenbay() + "', "
+                + giaHV.getGiaHangVe() + ", "
+                + giaHV.getSoluong() + ")";
+        
+        try {
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(HangVeDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(HangVeDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                
     }
     
 }

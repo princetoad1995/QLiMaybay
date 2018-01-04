@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.Chuyenbay;
-import Model.HangVe;
+import Model.GiaHangVe;
 import java.util.List;
 
 /**
@@ -16,5 +16,5 @@ import java.util.List;
 public interface ThemHangVeController {
     public List<Chuyenbay> getListChuyenbay();
     public boolean kiemtraMaChuyenbay(String maChuyenbay);
-    public void themHangVe(HangVe hv);
+    public void themGiaHangVe(GiaHangVe giaHV);
 }
