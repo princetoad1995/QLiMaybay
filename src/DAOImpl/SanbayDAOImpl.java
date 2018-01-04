@@ -47,5 +47,28 @@ public class SanbayDAOImpl extends BaseDAO implements SanbayDAO{
         }
         return list;
     }
+
+    @Override
+    public Sanbay getSanbay(int maSanbay) {
+        Sanbay sb = new Sanbay();
+        String sql = "SELECT * FROM tblSanbay WHERE maSanbay = " + maSanbay;
+        
+        try {
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                Thanhpho tp = new Thanhpho();
+                sb.setMaSanbay(rs.getInt("maSanbay"));
+                sb.setTenSanbay(rs.getString("tenSanbay"));
+                sb.setDiachi(rs.getString("diachi"));
+                tp.setMaThanhpho(rs.getInt("maThanhpho"));
+                sb.setThanhpho(tp);
+                sb.setMota(rs.getString("mota"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SanbayDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return sb;
+    }
     
 }

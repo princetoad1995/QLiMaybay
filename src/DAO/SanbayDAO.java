@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface SanbayDAO {
     public List<Sanbay> getListSanBayTuThanhPho(int maThanhpho);
+    
+    public Sanbay getSanbay(int maSanbay);
 }

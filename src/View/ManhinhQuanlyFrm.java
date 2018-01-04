@@ -30,8 +30,6 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnLenlichBay = new javax.swing.JButton();
-        btnQlThongtinSanbay = new javax.swing.JButton();
-        btnTKKhachTheoGio = new javax.swing.JButton();
         btnTKChangbayTheoDoanhThu = new javax.swing.JButton();
         btnChangbay = new javax.swing.JButton();
 
@@ -48,14 +46,13 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
             }
         });
 
-        btnQlThongtinSanbay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnQlThongtinSanbay.setText("Quản lý thông tin một sân bay");
-
-        btnTKKhachTheoGio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnTKKhachTheoGio.setText("Thống kê lượng khách theo khung giờ");
-
         btnTKChangbayTheoDoanhThu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnTKChangbayTheoDoanhThu.setText("Thống kê các chặng bay theo doanh thu");
+        btnTKChangbayTheoDoanhThu.setText("Thêm Giá vé cho Hạng vé");
+        btnTKChangbayTheoDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTKChangbayTheoDoanhThuActionPerformed(evt);
+            }
+        });
 
         btnChangbay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnChangbay.setText("Quản lý chặng bay");
@@ -77,8 +74,6 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnLenlichBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnQlThongtinSanbay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTKKhachTheoGio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnTKChangbayTheoDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnChangbay, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(159, Short.MAX_VALUE))
@@ -88,17 +83,13 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(btnQlThongtinSanbay)
-                .addGap(30, 30, 30)
+                .addGap(87, 87, 87)
                 .addComponent(btnChangbay)
                 .addGap(27, 27, 27)
                 .addComponent(btnLenlichBay)
-                .addGap(27, 27, 27)
-                .addComponent(btnTKKhachTheoGio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(btnTKChangbayTheoDoanhThu)
-                .addGap(31, 31, 31))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,8 +108,8 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
 
     private void btnChangbayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangbayActionPerformed
         // TODO add your handling code here:
-        ThemChangbayFrm changbayFrm = new ThemChangbayFrm();
-        changbayFrm.setVisible(true);
+        QuanLyChangbayFrm quanlyCBFrm = new QuanLyChangbayFrm();
+        quanlyCBFrm.setVisible(true);
     }//GEN-LAST:event_btnChangbayActionPerformed
 
     private void btnLenlichBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLenlichBayActionPerformed
@@ -126,6 +117,12 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
         LenLichBayFrm bayFrm = new LenLichBayFrm();
         bayFrm.setVisible(true);
     }//GEN-LAST:event_btnLenlichBayActionPerformed
+
+    private void btnTKChangbayTheoDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKChangbayTheoDoanhThuActionPerformed
+        // TODO add your handling code here:
+        CapnhatHangVeFrm capnhatHV = new CapnhatHangVeFrm();
+        capnhatHV.setVisible(true);
+    }//GEN-LAST:event_btnTKChangbayTheoDoanhThuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,9 +163,7 @@ public class ManhinhQuanlyFrm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangbay;
     private javax.swing.JButton btnLenlichBay;
-    private javax.swing.JButton btnQlThongtinSanbay;
     private javax.swing.JButton btnTKChangbayTheoDoanhThu;
-    private javax.swing.JButton btnTKKhachTheoGio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
