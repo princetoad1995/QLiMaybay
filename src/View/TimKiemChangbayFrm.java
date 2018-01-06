@@ -9,8 +9,12 @@ import Controller.TimkiemChangbayController;
 import ControllerImpl.TimkiemChangbayControllerImpl;
 import Model.Changbay;
 import Model.Sanbay;
+import Model.Thanhpho;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +24,8 @@ import javax.swing.JOptionPane;
 public class TimKiemChangbayFrm extends javax.swing.JFrame {
 
     private TimkiemChangbayController ctrl;
+    private Changbay cb;
+    private Sanbay sbDi, sbDen;
 
     /**
      * Creates new form TimKiemChangbayFrm
@@ -29,6 +35,29 @@ public class TimKiemChangbayFrm extends javax.swing.JFrame {
 
         ctrl = new TimkiemChangbayControllerImpl();
         viewTimkiem.setVisible(false);
+        cb = new Changbay();
+        sbDi = new Sanbay();
+        sbDen = new Sanbay();
+        
+        cbTPDi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cbSBDi.removeAllItems();
+                Thanhpho t = (Thanhpho) cbTPDi.getSelectedItem();
+                if(t != null)
+                    getListSB(cbSBDi, t.getMaThanhpho());
+            }
+        });
+        cbTPDen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cbSBDen.removeAllItems();
+                Thanhpho t = (Thanhpho) cbTPDen.getSelectedItem();
+                if(t != null)
+                    getListSB(cbSBDen, t.getMaThanhpho());
+            }
+        });
+        
     }
 
     /**
@@ -85,8 +114,18 @@ public class TimKiemChangbayFrm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Sửa chặng bay");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Xóa chặng bay");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Thành phố đi :");
 
@@ -211,15 +250,26 @@ public class TimKiemChangbayFrm extends javax.swing.JFrame {
                     "Thông báo", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Changbay cb = ctrl.timkiemChangbay(Integer.parseInt(txtTimMaChangbay.getText()));
-                if(cb == null){
+                cb = ctrl.timkiemChangbay(Integer.parseInt(txtTimMaChangbay.getText()));
+
+                if (cb.getSanbayDi() == null) {
+                    viewTimkiem.setVisible(false);
                     JOptionPane.showMessageDialog(null, "Không tìm thấy mã chặng bay phù hợp",
-                        "Thông báo", JOptionPane.WARNING_MESSAGE);
+                            "Thông báo", JOptionPane.WARNING_MESSAGE);
                 } else {
+                    cbTPDi.removeAllItems();
+                    cbTPDen.removeAllItems();
+                    cbSBDi.removeAllItems();
+                    cbSBDen.removeAllItems();
+                    txtMaChangbay.setText("");
+                    
+                    sbDi = ctrl.getSanbay(cb.getSanbayDi().getMaSanbay());
+                    sbDen = ctrl.getSanbay(cb.getSanbayDen().getMaSanbay());
                     viewTimkiem.setVisible(true);
                     txtMaChangbay.setText(cb.getMaChangbay() + "");
-                    
-                    
+
+                    init();
+
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Mã chuyến bay là số tự nhiên",
@@ -229,9 +279,90 @@ public class TimKiemChangbayFrm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void init() {
+        List<Thanhpho> listTP = ctrl.getListThanhpho();
+        for (Thanhpho tp : listTP) {
+            cbTPDi.addItem(tp);
+            cbTPDen.addItem(tp);
+        }
+
+        for (Thanhpho tp : listTP) {
+            if (tp.getMaThanhpho() == sbDi.getThanhpho().getMaThanhpho()) {
+                cbTPDi.setSelectedItem(tp);
+                
+                List<Sanbay> listSB = ctrl.getListSanbayTuThanhPho(tp.getMaThanhpho());
+                int dem = -1;
+                for(Sanbay sb : listSB){
+                    dem++;
+                    if(sb.getMaSanbay() == sbDi.getMaSanbay()){
+                        cbSBDi.setSelectedIndex(dem);
+                    }
+                }
+            }
+            if (tp.getMaThanhpho() == sbDen.getThanhpho().getMaThanhpho()) {
+                cbTPDen.setSelectedItem(tp);
+                
+                List<Sanbay> listSB = ctrl.getListSanbayTuThanhPho(tp.getMaThanhpho());
+                int dem = -1;
+                for(Sanbay sb : listSB){
+                    dem++;
+                    if(sb.getMaSanbay() == sbDen.getMaSanbay()){
+                        cbSBDen.setSelectedIndex(dem);
+                    }
+                }
+            }
+        }
+        
+        
+        
+
+//        Thanhpho tDi = (Thanhpho) cbTPDi.getSelectedItem();
+//        Thanhpho tDen = (Thanhpho) cbTPDen.getSelectedItem();
+//        getListSB(cbSBDi, tDi.getMaThanhpho());
+//        getListSB(cbSBDen, tDen.getMaThanhpho());
+    
+    }
+
+    private void getListSB(JComboBox cb, int maThanhpho) {
+        List<Sanbay> listSB = ctrl.getListSanbayTuThanhPho(maThanhpho);
+        for (Sanbay sb : listSB) {
+            cb.addItem(sb);
+        }
+
+    }
+
     private void cbSBDenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSBDenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSBDenActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ctrl.xoaChangbay(Integer.parseInt(txtTimMaChangbay.getText()));
+        JOptionPane.showMessageDialog(null, "Xóa chặng bay thành công",
+                            "Thông báo", JOptionPane.OK_OPTION);
+        
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Thanhpho tpDi = (Thanhpho) cbTPDi.getSelectedItem();
+        Thanhpho tpDen = (Thanhpho) cbTPDen.getSelectedItem();
+        if (tpDi.getMaThanhpho() == tpDen.getMaThanhpho()) {
+            JOptionPane.showMessageDialog(null, "Không để thành phố đi và đến "
+                    + "trùng nhau", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Sanbay sbDi = (Sanbay) cbSBDi.getSelectedItem();
+            Sanbay sbDen = (Sanbay) cbSBDen.getSelectedItem();
+            cb.setSanbayDi(sbDi);
+            cb.setSanbayDen(sbDen);
+            ctrl.suaChangbay(cb);
+            
+            JOptionPane.showMessageDialog(null, "Sửa chặng bay thành công", 
+                    "Thông báo", NORMAL);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

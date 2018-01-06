@@ -52,5 +52,11 @@ public class TimkiemChangbayControllerImpl implements TimkiemChangbayController{
         SanbayDAO sbDAO = new SanbayDAOImpl();
         return sbDAO.getListSanBayTuThanhPho(maThanhpho);
     }
+
+    @Override
+    public Sanbay getSanbay(int maSanbay) {
+        SanbayDAO sbDAO = new SanbayDAOImpl();
+        return sbDAO.getSanbay(maSanbay);
+    }
     
 }

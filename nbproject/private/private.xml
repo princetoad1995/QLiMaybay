@@ -4,12 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/Study/PTTK/QLiMaybay/src/View/LenLichBayFrm.java</file>
-            <file>file:/E:/Study/PTTK/QLiMaybay/src/ControllerImpl/ThemHangVeControllerImpl.java</file>
             <file>file:/E:/Study/PTTK/QLiMaybay/src/DAOImpl/ChangbayDAOImpl.java</file>
-            <file>file:/E:/Study/PTTK/QLiMaybay/src/View/CapnhatHangVeFrm.java</file>
-            <file>file:/E:/Study/PTTK/QLiMaybay/src/Model/GiaHangVe.java</file>
-            <file>file:/E:/Study/PTTK/QLiMaybay/src/DAOImpl/ChuyenbayDAOImpl.java</file>
-            <file>file:/E:/Study/PTTK/QLiMaybay/src/Controller/ThemHangVeController.java</file>
+            <file>file:/E:/Study/PTTK/QLiMaybay/src/View/TimKiemChangbayFrm.java</file>
+            <file>file:/E:/Study/PTTK/QLiMaybay/src/View/QuanLyChangbayFrm.java</file>
+            <file>file:/E:/Study/PTTK/QLiMaybay/src/View/ThemChangbayFrm.java</file>
         </group>
     </open-files>
 </project-private>

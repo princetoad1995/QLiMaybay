@@ -118,7 +118,7 @@ public class ChangbayDAOImpl extends BaseDAO implements ChangbayDAO {
     @Override
     public void suaChangbay(Changbay cb) {
         String sql = "UPDATE tblChangbay SET maSanbayDi = " + cb.getSanbayDi().getMaSanbay() 
-                + " AND maSanbayDen = " + cb.getSanbayDen().getMaSanbay() + " "
+                + ", maSanbayDen = " + cb.getSanbayDen().getMaSanbay() + " "
                 + "WHERE maChangbay = " + cb.getMaChangbay();
         try {
             stmt.executeUpdate(sql);

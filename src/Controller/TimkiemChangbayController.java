@@ -21,6 +21,8 @@ public interface TimkiemChangbayController {
     
     public List<Sanbay> getListSanbayTuThanhPho(int maThanhpho);
     
+    public Sanbay getSanbay(int maSanbay);
+    
     public void suaChangbay(Changbay cb);
     
     public void xoaChangbay(int maChangbay);
